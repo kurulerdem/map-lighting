@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socomec Map</title>
+    
+    <style>
+        #map{
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div><img src="./logo.png" style="height: 50px; font-size: 23;"> <b style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Socomec Linye Durumlari</b></div>
+    
+    <div id="map">
+
+    </div>
+
+    <div id = 'response'>
+    
+    </div>
+    <script>
+    function initMap(){
+        var options = {
+            zoom:12,
+            center: {lat:41.27663368775447, lng:28.728231664767865} 
+        }
+        var map = new google.maps.Map(document.getElementById('map'),options);
+        var marker = new google.maps.Marker({
+            position:{lat: 41.24924332872258,lng:28.74729969153392},
+            map:map,
+            icon: 'rec.png'
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content : '<h3>Linye 17 Durum : Normal</h3>'
+        });
+            marker.addListener('click',function(){
+                infoWindow.open(map,marker);
+            });
+            }</script>
+    <script src="scripts/app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7yt2YIVkpqLANhROjNpBuZs4SqdQGuJc&callback=initMap&libraries=places,geometry&solution_channel=GMP_QB_locatorplus_v4_cABD" async defer></script>
+</body>
+</html>
+
